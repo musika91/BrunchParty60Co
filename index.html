@@ -1,803 +1,911 @@
-Version du 18/03/26
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
 <title>Brunch'Party 60 ans Corinne</title>
-
 <style>
+:root{
+  --bg:#fff4ec;
+  --card:#ffffff;
+  --accent:#ff7a18;
+  --accent-dark:#e56710;
+  --accent-soft:#ffe0cc;
+  --section:#ffd4b2;
+  --text:#5f3411;
+  --shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+*{
+  box-sizing:border-box;
+}
 
 body{
-font-family:Arial;
-background:#fff4ec;
-margin:0;
-padding: 2px;
+  font-family:Arial, sans-serif;
+  background:var(--bg);
+  margin:0;
+  padding:20px;
+  color:var(--text);
 }
 
 h1{
-text-align:center;
-color:#d35400;
+  text-align:center;
+  color:#d35400;
 }
 
 h2{
-text-align:center;
+  text-align:center;
 }
 
 .card{
-background:white;
-padding:2px;
-border-radius:12px;
-box-shadow:0 4px 15px rgba(0,0,0,0.1);
-margin-bottom:25px;
+  background:var(--card);
+  padding:20px;
+  border-radius:12px;
+  box-shadow:var(--shadow);
+  margin-bottom:25px;
+}
+
+.event-details{
+  text-align:center;
+  line-height:1.8;
 }
 
 table{
-width:90%;
-margin:auto
-border-collapse:collapse;
+  width:90%;
+  margin:auto;
+  border-collapse:collapse;
 }
 
 th,td{
-padding:8px;
-border-bottom:1px solid #eee;
-text-align:center;
+  padding:8px;
+  border-bottom:1px solid #eee;
+  text-align:center;
 }
 
 th{
-background:#ffe0cc;
+  background:var(--accent-soft);
 }
 
-.section{
-background:#ffd4b2;
-font-weight:bold;
-text-align:left;
-}
-
-progress{
-width:50%;
-height:18px;
+.section td{
+  background:var(--section);
+  font-weight:bold;
+  text-align:left;
 }
 
 input{
-padding:6px;
-width: 80px;
+  padding:6px;
+  width:70px;
+}
+
+#prenom{
+  width:220px;
+  max-width:100%;
 }
 
 button{
-background:#ff7a18;
-border:none;
-color:white;
-padding:12px 20px;
-border-radius:8px;
-cursor:pointer;
-font-size:16px;
+  background:var(--accent);
+  border:none;
+  color:white;
+  padding:12px 20px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:16px;
 }
 
 button:hover{
-background:#e56710;
+  background:var(--accent-dark);
 }
 
 .form{
-text-align:center;
-margin-bottom:20px;
+  text-align:center;
+  margin-bottom:20px;
 }
 
+.subhead th{
+  background:#fff0e6;
+  font-size:14px;
+}
+
+.actions{
+  text-align:center;
+}
+
+@media screen and (max-width:768px){
+  body{
+    padding:10px;
+  }
+
+  table{
+    width:100%;
+    font-size:12px;
+    display:block;
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+
+  th,td{
+    padding:6px;
+  }
+
+  input{
+    width:60px;
+  }
+
+  #prenom{
+    width:180px;
+  }
+
+  h1{
+    font-size:20px;
+  }
+
+  .card{
+    padding:10px;
+    margin:10px 0;
+  }
+}
 </style>
-
 </head>
-
 <body>
 
 <h1 ondblclick="secretReset()">🎈 Brunch'Party 60 ans Corinne 🎈</h1>
 
 <div class="card">
-
-<p style="text-align:center">
-
-📅 26 avril 2026<br>
-🕛 12h00 jusqu'au bout de la nuit 😘<br>
-📍 Centre Equestre La Ferme du Soleil – D26 - 91710 Vert le Petit<br>
-👥 Nous serons 40
-
-</p>
-
+  <p class="event-details">
+    📅 26 avril 2026<br>
+    🕛 12h00 jusqu'au bout de la nuit 😘<br>
+    📍 Centre Équestre La Ferme du Soleil - D26 - 91710 Vert-le-Petit<br>
+    👥 Nous serons 40
+  </p>
 </div>
 
 <div class="card form">
-
-<label>Ton prénom :</label>
-<input id="prenom" placeholder="Ex : Adam">
-
+  <label for="prenom">Ton prénom :</label>
+  <input id="prenom" placeholder="Ex : Adam">
 </div>
 
 <div class="card">
+  <h2>Le Brunch</h2>
 
-<h2>Le Brunch</h2>
+  <table id="table">
+    <tr class="section"><td colspan="5">Pôle salé chaud</td></tr>
+    <tr class="subhead">
+      <th>Élément</th>
+      <th>Quantité nécessaire</th>
+      <th>Je prends</th>
+      <th>Restant</th>
+      <th>Qui</th>
+    </tr>
 
-<table id="table">
+    <tr data-need="60">
+      <td>Bacon grillé (tranches)</td>
+      <td>60</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">60</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr class="section"><td colspan="6">Pôle salé chaud</td></tr>
+    <tr data-need="20">
+      <td>Œufs brouillés</td>
+      <td>20</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">20</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr>
-<th>Élément</th>
-<th>Quantité nécessaire</th>
-<th>Je prends</th>
-<th>Restant</th>
-<th>Progression</th>
-<th>Qui</th>
-</tr>
+    <tr data-need="6">
+      <td>Saucisses Knack X 10</td>
+      <td>6</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">6</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr data-need="60">
-<td>Bacon grillé (tranches)</td>
-<td>60</td>
-<td><input type="number" min="0"></td>
-<td class="restant">60</td>
-<td><progress value="0" max="60"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr class="section"><td colspan="5">Pôle salé froid</td></tr>
 
-<tr data-need="20">
-<td>Oeufs brouillés</td>
-<td>20</td>
-<td><input type="number" min="0"></td>
-<td class="restant">20</td>
-<td><progress value="0" max="20"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr data-need="3">
+      <td>Chips</td>
+      <td>3</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">3</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr data-need="6">
-<td>Saucisses Knack X 10 </td>
-<td>6</td>
-<td><input type="number" min="0"></td>
-<td class="restant">6</td>
-<td><progress value="0" max="6"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr data-need="10">
+      <td>Pizza</td>
+      <td>10</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">10</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr class="section"><td colspan="6">Pôle salé froid</td></tr>
+    <tr data-need="3">
+      <td>Planche charcuterie (2 kg)</td>
+      <td>3</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">3</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr>
-<th>Élément</th>
-<th>Quantité nécessaire</th>
-<th>Je prends</th>
-<th>Restant</th>
-<th>Progression</th>
-<th>Qui</th>
-</tr>
+    <tr data-need="2">
+      <td>Planche 6 fromages</td>
+      <td>2</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">2</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr data-need="3">
-<td>Chips</td>
-<td>3</td>
-<td><input type="number" min="0"></td>
-<td class="restant">3</td>
-<td><progress value="0" max="3"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr data-need="6">
+      <td>Poulet rôti</td>
+      <td>6</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">6</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr data-need="10">
-<td>Pizza</td>
-<td>10</td>
-<td><input type="number" min="0"></td>
-<td class="restant">10</td>
-<td><progress value="0" max="10"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr data-need="4">
+      <td>Quiches</td>
+      <td>4</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">4</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr data-need="3">
-<td>Planche charcuterie (2 kg)</td>
-<td>3</td>
-<td><input type="number" min="0"></td>
-<td class="restant">3</td>
-<td><progress value="0" max="3"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr data-need="4">
+      <td>Salades composées (saladier)</td>
+      <td>4</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">4</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr data-need="2">
-<td>Planche 6 fromages</td>
-<td>2</td>
-<td><input type="number" min="0"></td>
-<td class="restant">2</td>
-<td><progress value="0" max="2"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr data-need="60">
+      <td>Sushis</td>
+      <td>60</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">60</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr data-need="6">
-<td>Poulet rôti</td>
-<td>6</td>
-<td><input type="number" min="0"></td>
-<td class="restant">6</td>
-<td><progress value="0" max="6"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr class="section"><td colspan="5">Pôle sucré</td></tr>
+    <tr class="subhead">
+      <th>Élément</th>
+      <th>Quantité nécessaire</th>
+      <th>Je prends</th>
+      <th>Restant</th>
+      <th>Qui</th>
+    </tr>
 
-<tr data-need="4">
-<td>Quiches</td>
-<td>4</td>
-<td><input type="number" min="0"></td>
-<td class="restant">4</td>
-<td><progress value="0" max="4"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr data-need="40">
+      <td>Crêpes / Pancakes</td>
+      <td>40</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">40</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr data-need="4">
-<td>Salades composées (saladier) </td>
-<td>4</td>
-<td><input type="number" min="0"></td>
-<td class="restant">4</td>
-<td><progress value="0" max="4"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr data-need="40">
+      <td>Macarons</td>
+      <td>40</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">40</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr data-need="60">
-<td>Sushis </td>
-<td>60</td>
-<td><input type="number" min="0"></td>
-<td class="restant">60</td>
-<td><progress value="0" max="60"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr data-need="1">
+      <td>Pièce montée</td>
+      <td>1</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">1</td>
+      <td class="qui"></td>
+    </tr>
 
+    <tr data-need="2">
+      <td>Salade de fruits (saladier)</td>
+      <td>2</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">2</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr class="section"><td colspan="6">Pôle sucré</td></tr>
+    <tr class="section"><td colspan="5">Boissons</td></tr>
+    <tr class="subhead">
+      <th>Élément</th>
+      <th>Quantité nécessaire</th>
+      <th>Je prends</th>
+      <th>Restant</th>
+      <th>Qui</th>
+    </tr>
 
-<tr>
-<th>Élément</th>
-<th>Quantité nécessaire</th>
-<th>Je prends</th>
-<th>Restant</th>
-<th>Progression</th>
-<th>Qui</th>
-</tr>
+    <tr data-need="40">
+      <td>Bières</td>
+      <td>40</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">40</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr data-need="40">
-<td>Crêpes / Pancakes</td>
-<td>40</td>
-<td><input type="number" min="0"></td>
-<td class="restant">40</td>
-<td><progress value="0" max="40"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr data-need="20">
+      <td>Champagne</td>
+      <td>20</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">20</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr data-need="40">
-<td>Macarons</td>
-<td>40</td>
-<td><input type="number" min="0"></td>
-<td class="restant">40</td>
-<td><progress value="0" max="40"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr data-need="4">
+      <td>Coca canettes X 6</td>
+      <td>4</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">4</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr data-need="1">
-<td>Pièce Montée</td>
-<td>1</td>
-<td><input type="number" min="0"></td>
-<td class="restant">1</td>
-<td><progress value="0" max="1"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr data-need="2">
+      <td>Cocktail / Punch 5 L</td>
+      <td>2</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">2</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr data-need="2">
-<td>Salade de fruits (saladier)</td>
-<td>2</td>
-<td><input type="number" min="0"></td>
-<td class="restant">2</td>
-<td><progress value="0" max="2"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr data-need="6">
+      <td>Eau 1,5 ou 2 L (pack de 6)</td>
+      <td>6</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">6</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr class="section"><td colspan="6">Boissons</td></tr>
+    <tr data-need="15">
+      <td>Jus / Soft (litres)</td>
+      <td>15</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">15</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr>
-<th>Élément</th>
-<th>Quantité nécessaire</th>
-<th>Je prends</th>
-<th>Restant</th>
-<th>Progression</th>
-<th>Qui</th>
-</tr>
+    <tr data-need="10">
+      <td>Vin</td>
+      <td>10</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">10</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr data-need="40">
-<td>Bières</td>
-<td>40</td>
-<td><input type="number" min="0"></td>
-<td class="restant">40</td>
-<td><progress value="0" max="40"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr class="section"><td colspan="5">Accompagnements</td></tr>
+    <tr class="subhead">
+      <th>Élément</th>
+      <th>Quantité nécessaire</th>
+      <th>Je prends</th>
+      <th>Restant</th>
+      <th>Qui</th>
+    </tr>
 
-<tr data-need="20">
-<td>Champagne</td>
-<td>20</td>
-<td><input type="number" min="0"></td>
-<td class="restant">20</td>
-<td><progress value="0" max="20"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr data-need="2">
+      <td>Beurre</td>
+      <td>2</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">2</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr data-need="4">
-<td>Coca canettes X 6</td>
-<td>4</td>
-<td><input type="number" min="0"></td>
-<td class="restant">4</td>
-<td><progress value="0" max="4"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr data-need="2">
+      <td>Mayonnaise</td>
+      <td>2</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">2</td>
+      <td class="qui"></td>
+    </tr>
 
+    <tr data-need="1">
+      <td>Moutarde</td>
+      <td>1</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">1</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr data-need="6">
-<td>Eau 1.5 ou 2L (pack de 6) </td>
-<td>6</td>
-<td><input type="number" min="0"></td>
-<td class="restant">6</td>
-<td><progress value="0" max="6"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr data-need="1">
+      <td>Nutella</td>
+      <td>1</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">1</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr data-need="15">
-<td>Jus/Soft (litres)</td>
-<td>15</td>
-<td><input type="number" min="0"></td>
-<td class="restant">15</td>
-<td><progress value="0" max="15"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr data-need="20">
+      <td>Pains variés / Baguette</td>
+      <td>20</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">20</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr data-need="2">
-<td>Punch/Cocktail 4 L</td>
-<td>2</td>
-<td><input type="number" min="0"></td>
-<td class="restant">2</td>
-<td><progress value="0" max="2"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr data-need="1">
+      <td>Sel et poivre</td>
+      <td>1</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">1</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr data-need="10">
-<td>Vin</td>
-<td>10</td>
-<td><input type="number" min="0"></td>
-<td class="restant">10</td>
-<td><progress value="0" max="10"></progress></td>
-<td class="qui"></td>
-</tr>
+    <tr data-need="1">
+      <td>Sucre morceaux</td>
+      <td>1</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">1</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr class="section"><td colspan="6">Accompagnements</td></tr>
+    <tr data-need="1">
+      <td>Sucre en poudre</td>
+      <td>1</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">1</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr>
-<th>Élément</th>
-<th>Quantité nécessaire</th>
-<th>Je prends</th>
-<th>Restant</th>
-<th>Progression</th>
-<th>Qui</th>
-</tr>
-
-<tr data-need="2">
-<td>Beurre</td>
-<td>2</td>
-<td><input type="number" min="0"></td>
-<td class="restant">2</td>
-<td><progress value="0" max="2"></progress></td>
-<td class="qui"></td>
-</tr>
-
-<tr data-need="2">
-<td>Mayonnaise</td>
-<td>2</td>
-<td><input type="number" min="0"></td>
-<td class="restant">2</td>
-<td><progress value="0" max="2"></progress></td>
-<td class="qui"></td>
-</tr>
-
-<tr data-need="1">
-<td>Moutarde</td>
-<td>1</td>
-<td><input type="number" min="0"></td>
-<td class="restant">1</td>
-<td><progress value="0" max="1"></progress></td>
-<td class="qui"></td>
-</tr>
-
-<tr data-need="1">
-<td>Nutella</td>
-<td>1</td>
-<td><input type="number" min="0"></td>
-<td class="restant">1</td>
-<td><progress value="0" max="1"></progress></td>
-<td class="qui"></td>
-</tr>
-
-<tr data-need="20">
-<td>Pains variés/Baguettes</td>
-<td>20</td>
-<td><input type="number" min="0"></td>
-<td class="restant">20</td>
-<td><progress value="0" max="20"></progress></td>
-<td class="qui"></td>
-</tr>
-
-<tr data-need="1">
-<td>Sel et Poivre</td>
-<td>1</td>
-<td><input type="number" min="0"></td>
-<td class="restant">1</td>
-<td><progress value="0" max="1"></progress></td>
-<td class="qui"></td>
-</tr>
-
-<tr data-need="1">
-<td>Sucre morceaux</td>
-<td>1</td>
-<td><input type="number" min="0"></td>
-<td class="restant">1</td>
-<td><progress value="0" max="1"></progress></td>
-<td class="qui"></td>
-</tr>
-
-<tr data-need="1">
-<td>Sucre en poudre</td>
-<td>1</td>
-<td><input type="number" min="0"></td>
-<td class="restant">1</td>
-<td><progress value="0" max="1"></progress></td>
-<td class="qui"></td>
-</tr>
-
-<tr data-need="1">
-<td>Vinaigrette</td>
-<td>1</td>
-<td><input type="number" min="0"></td>
-<td class="restant">1</td>
-<td><progress value="0" max="1"></progress></td>
-<td class="qui"></td>
-
-</tr>
-</table>
+    <tr data-need="1">
+      <td>Vinaigrette</td>
+      <td>1</td>
+      <td><input type="number" min="0"></td>
+      <td class="restant">1</td>
+      <td class="qui"></td>
+    </tr>
+  </table>
 </div>
 
 <div class="card">
-<h2>L'intendance</h2>
+  <h2>L'intendance</h2>
 
-<table id="intend">
+  <table id="intend">
+    <tr class="section"><td colspan="4">Logistique</td></tr>
+    <tr class="subhead">
+      <th>Élément</th>
+      <th>Je prends</th>
+      <th>Cumul</th>
+      <th>Qui</th>
+    </tr>
 
-<tr class="section"><td colspan="4">Logistique</td></tr>
+    <tr>
+      <td>Assiettes</td>
+      <td><input type="number" min="0" max="4"></td>
+      <td class="cumul">0</td>
+      <td class="qui"></td>
+    </tr>
+    <tr>
+      <td>Couverts</td>
+      <td><input type="number" min="0" max="4"></td>
+      <td class="cumul">0</td>
+      <td class="qui"></td>
+    </tr>
+    <tr>
+      <td>Couverts de service</td>
+      <td><input type="number" min="0" max="4"></td>
+      <td class="cumul">0</td>
+      <td class="qui"></td>
+    </tr>
+    <tr>
+      <td>Plats de service</td>
+      <td><input type="number" min="0" max="4"></td>
+      <td class="cumul">0</td>
+      <td class="qui"></td>
+    </tr>
+    <tr>
+      <td>Glaçons</td>
+      <td><input type="number" min="0" max="4"></td>
+      <td class="cumul">0</td>
+      <td class="qui"></td>
+    </tr>
+    <tr>
+      <td>Sacs poubelle</td>
+      <td><input type="number" min="0" max="4"></td>
+      <td class="cumul">0</td>
+      <td class="qui"></td>
+    </tr>
+    <tr>
+      <td>Matériel et produits de nettoyage</td>
+      <td><input type="number" min="0" max="4"></td>
+      <td class="cumul">0</td>
+      <td class="qui"></td>
+    </tr>
 
-<tr>
-<th>Elément</th>
-<th>Je prends</th>
-<th>Cumul</th>
-<th>Qui</th>
-</tr>
+    <tr class="section"><td colspan="4">Ambiance</td></tr>
+    <tr class="subhead">
+      <th>Élément</th>
+      <th>Je prends</th>
+      <th>Cumul</th>
+      <th>Qui</th>
+    </tr>
 
-<tr>
-<td>Assiettes</td>
-<td><input type="number" min="0" max="4"></td>
-<td class="cumul">0</td>
-<td class="qui"></td>
-</tr>
-
-<tr>
-<td>Couverts</td>
-<td><input type="number" min="0" max="4"></td>
-<td class="cumul">0</td>
-<td class="qui"></td>
-</tr>
-
-<tr>
-<td>Glaçons</td>
-<td><input type="number" min="0" max="4"></td>
-<td class="cumul">0</td>
-<td class="qui"></td>
-</tr>
-
-<tr>
-<td>Sacs poubelle</td>
-<td><input type="number" min="0" max="4"></td>
-<td class="cumul">0</td>
-<td class="qui"></td>
-</tr>
-
-<tr>
-<td>Matériel et produits de nettoyage</td>
-<td><input type="number" min="0" max="4"></td>
-<td class="cumul">0</td>
-<td class="qui"></td>
-</tr>
-
-<tr>
-<td>Couverts de service</td>
-<td><input type="number" min="0" max="4"></td>
-<td class="cumul">0</td>
-<td class="qui"></td>
-</tr>
-
-<tr>
-<td>Plats de service</td>
-<td><input type="number" min="0" max="4"></td>
-<td class="cumul">0</td>
-<td class="qui"></td>
-</tr>
-
-<tr class="section"><td colspan="4">Ambiance</td></tr>
-
-<tr>
-<th>Elément</th>
-<th>Je prends</th>
-<th>Cumul</th>
-<th>Qui</th>
-</tr>
-
-<tr>
-<td>Installation et décoration salle</td>
-<td><input type="number" min="0" max="4"></td>
-<td class="cumul">0</td>
-<td class="qui"></td>
-</tr>
-
-<tr>
-<td>Jeux et animation</td>
-<td><input type="number" min="0" max="4"></td>
-<td class="cumul">0</td>
-<td class="qui"></td>
-</tr>
-
-<tr>
-<td>Musique/Playlists</td>
-<td><input type="number" min="0" max="4"></td>
-<td class="cumul">0</td>
-<td class="qui"></td>
-</tr>
-
-<tr>
-<td>Photoboot</td>
-<td><input type="number" min="0" max="4"></td>
-<td class="cumul">0</td>
-<td class="qui"></td>
-</tr>
-
-<tr>
-<td>Rangement salle</td>
-<td><input type="number" min="0" max="4"></td>
-<td class="cumul">0</td>
-<td class="qui"></td>
-</tr>
-
-<tr>
-<td>Nettoyage salle</td>
-<td><input type="number" min="0" max="4"></td>
-<td class="cumul">0</td>
-<td class="qui"></td>
-</tr>
-</table>
+    <tr>
+      <td>Décoration / Installation salle</td>
+      <td><input type="number" min="0" max="4"></td>
+      <td class="cumul">0</td>
+      <td class="qui"></td>
+    </tr>
+    <tr>
+      <td>Jeux et animation</td>
+      <td><input type="number" min="0" max="4"></td>
+      <td class="cumul">0</td>
+      <td class="qui"></td>
+    </tr>
+    <tr>
+      <td>Musique / Playlists</td>
+      <td><input type="number" min="0" max="4"></td>
+      <td class="cumul">0</td>
+      <td class="qui"></td>
+    </tr>
+    <tr>
+      <td>Photobooth</td>
+      <td><input type="number" min="0" max="4"></td>
+      <td class="cumul">0</td>
+      <td class="qui"></td>
+    </tr>
+    <tr>
+      <td>Rangement salle</td>
+      <td><input type="number" min="0" max="4"></td>
+      <td class="cumul">0</td>
+      <td class="qui"></td>
+    </tr>
+    <tr>
+      <td>Nettoyage salle</td>
+      <td><input type="number" min="0" max="4"></td>
+      <td class="cumul">0</td>
+      <td class="qui"></td>
+    </tr>
+  </table>
 </div>
 
-<div style="text-align:center;">
-<button onclick="ajouter()">Ajouter ma contribution</button>
+<div class="actions">
+  <button onclick="ajouter()">Ajouter ma contribution</button>
 </div>
 
 <div class="card">
-<h2>🧾 Ma contribution</h2>
-
-<table id="recap">
-<tr>
-<th>Elément</th>
-<th>Quantité</th>
-</tr>
-
-</table>
-
+  <h2>🧾 Ma contribution</h2>
+  <table id="recap">
+    <tr>
+      <th>Élément</th>
+      <th>Quantité</th>
+    </tr>
+  </table>
 </div>
 
-<script>
+<div class="card">
+  <h2>📋 Toutes les contributions</h2>
+  <table id="global">
+    <thead>
+      <tr>
+        <th>Élément</th>
+        <th>Nom</th>
+        <th>Quantité</th>
+        <th>Cumul</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
 
-function ajouter(){
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  getFirestore,
+  onSnapshot,
+  orderBy,
+  query
+} from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
 
-let prenom=document.getElementById("prenom").value.trim()
+const firebaseConfig = {
+  apiKey: "AIzaSyD-SHWNeM6bGe0PnuwfTSlxVsOUHKZkgig",
+  authDomain: "brunch-corinne.firebaseapp.com",
+  projectId: "brunch-corinne",
+  storageBucket: "brunch-corinne.firebasestorage.app",
+  messagingSenderId: "32038361329",
+  appId: "1:32038361329:web:0bcfc76745e996e7aab150"
+};
 
-if(prenom===""){
-alert("Entre ton prénom 😉")
-return
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const contributionsRef = collection(db, "contributions");
+
+function resetRecap(){
+  const recapTable = document.getElementById("recap");
+  recapTable.innerHTML = `
+    <tr>
+      <th>Élément</th>
+      <th>Quantité</th>
+    </tr>
+  `;
 }
 
-let recapData=[]
+function ajouterAuRecap(recapData){
+  resetRecap();
 
-//////////////////////////
-// 🍽️ BRUNCH
-//////////////////////////
-
-document.querySelectorAll("#table tr[data-need]").forEach(row=>{
-
-let need=parseInt(row.dataset.need)
-let input=row.querySelector("input")
-let pris=parseInt(input.value)||0
-
-let progress=row.querySelector("progress")
-let restantCell=row.querySelector(".restant")
-let qui=row.querySelector(".qui")
-
-let restantActuel=parseInt(restantCell.innerText)
-
-if(pris>0){
-
-if(pris>restantActuel){
-pris=restantActuel
+  recapData.forEach(item => {
+    const row = document.createElement("tr");
+    row.innerHTML = `<td>${item.element}</td><td>${item.quantite}</td>`;
+    document.getElementById("recap").appendChild(row);
+  });
 }
 
-let total=parseInt(progress.value)+pris
-progress.value=total
-
-let reste=need-total
-restantCell.innerText=reste>0?reste:0
-
-if(qui.innerText.trim()===""){
-qui.innerText=prenom
-}else{
-qui.innerText += ", " + prenom
+function resetBrunch(){
+  document.querySelectorAll("#table tr[data-need]").forEach(row => {
+    const need = parseInt(row.dataset.need, 10) || 0;
+    row.querySelector(".restant").innerText = String(need);
+    row.querySelector(".qui").innerText = "";
+  });
 }
 
-let element=row.children[0].innerText
-recapData.push({element, quantite:pris})
+function resetIntendance(){
+  document.querySelectorAll("#intend tr").forEach(row => {
+    const cumul = row.querySelector(".cumul");
+    const qui = row.querySelector(".qui");
 
-input.value=""
+    if(cumul){
+      cumul.innerText = "0";
+    }
+
+    if(qui){
+      qui.innerText = "";
+    }
+  });
 }
 
-})
+function renderGlobal(contributions){
+  const tbody = document.querySelector("#global tbody");
+  tbody.innerHTML = "";
 
-//////////////////////////
-// 🧹 INTENDANCE
-//////////////////////////
+  const groupes = {};
 
-document.querySelectorAll("#intend tr").forEach((row,index)=>{
+  contributions.forEach(item => {
+    if(!groupes[item.element]){
+      groupes[item.element] = [];
+    }
 
-if(index===0 || row.classList.contains("section")) return
+    groupes[item.element].push({
+      qui: item.qui,
+      quantite: Number(item.quantite)
+    });
+  });
 
-let input=row.querySelector("input")
-if(!input) return
+  Object.keys(groupes).sort((a, b) => a.localeCompare(b, "fr")).forEach(element => {
+    let cumul = 0;
 
-let cumulCell=row.querySelector(".cumul")
-let qui=row.querySelector(".qui")
-
-let pris=parseInt(input.value)||0
-
-if(pris>0){
-
-if(pris>4){pris=4}
-
-let cumulActuel=parseInt(cumulCell.innerText)
-cumulCell.innerText=cumulActuel+pris
-
-if(qui.innerText.trim()===""){
-qui.innerText=prenom
-}else{
-qui.innerText += ", " + prenom
+    groupes[element].forEach((item, index) => {
+      cumul += item.quantite;
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${index === 0 ? element : ""}</td>
+        <td>${item.qui}</td>
+        <td>${item.quantite}</td>
+        <td>${cumul}</td>
+      `;
+      tbody.appendChild(row);
+    });
+  });
 }
 
-let element=row.children[0].innerText
-recapData.push({element, quantite:pris})
+function renderFromContributions(contributions){
+  resetBrunch();
+  resetIntendance();
+  renderGlobal(contributions);
 
-input.value=""
+  const brunchMap = {};
+  const intendMap = {};
+
+  contributions.forEach(item => {
+    const targetMap = item.type === "intend" ? intendMap : brunchMap;
+
+    if(!targetMap[item.element]){
+      targetMap[item.element] = {
+        total: 0,
+        noms: []
+      };
+    }
+
+    targetMap[item.element].total += Number(item.quantite);
+
+    if(!targetMap[item.element].noms.includes(item.qui)){
+      targetMap[item.element].noms.push(item.qui);
+    }
+  });
+
+  document.querySelectorAll("#table tr[data-need]").forEach(row => {
+    const element = row.children[0].innerText;
+    const need = parseInt(row.dataset.need, 10) || 0;
+    const data = brunchMap[element];
+
+    if(!data){
+      return;
+    }
+
+    row.querySelector(".restant").innerText = String(Math.max(0, need - data.total));
+    row.querySelector(".qui").innerText = data.noms.join(", ");
+  });
+
+  document.querySelectorAll("#intend tr").forEach(row => {
+    const input = row.querySelector("input");
+    if(!input){
+      return;
+    }
+
+    const element = row.children[0].innerText;
+    const data = intendMap[element];
+
+    if(!data){
+      return;
+    }
+
+    row.querySelector(".cumul").innerText = String(data.total);
+    row.querySelector(".qui").innerText = data.noms.join(", ");
+  });
 }
 
-})
+async function ajouter(){
+  const prenom = document.getElementById("prenom").value.trim();
 
-//////////////////////////
-// 🧾 RÉCAP
-//////////////////////////
-let recapTable=document.getElementById("recap")
+  if(prenom === ""){
+    alert("Entre ton prénom 😉");
+    return;
+  }
 
-// reset (garde l'entête)
-recapTable.innerHTML = `
-<tr>
-<th>Elément</th>
-<th>Quantité</th>
-</tr>
-`
-recapData.forEach(item=>{
+  const recapData = [];
 
-let row=document.createElement("tr")
+  document.querySelectorAll("#table tr[data-need]").forEach(row => {
+    const need = parseInt(row.dataset.need, 10) || 0;
+    const input = row.querySelector("input");
+    const restantActuel = parseInt(row.querySelector(".restant").innerText, 10) || 0;
+    let pris = parseInt(input.value, 10) || 0;
 
-row.innerHTML=`
-<td>${item.element}</td>
-<td>${item.quantite}</td>
-`
-recapTable.appendChild(row)
+    input.max = restantActuel;
 
-})
+    if(pris > restantActuel){
+      pris = restantActuel;
+      input.value = String(restantActuel);
+    }
 
-sauvegarder()
+    if(pris <= 0){
+      input.value = "";
+      return;
+    }
 
+    recapData.push({
+      element: row.children[0].innerText,
+      quantite: Math.min(pris, need),
+      type: "brunch"
+    });
+  });
+
+  document.querySelectorAll("#intend tr").forEach(row => {
+    const input = row.querySelector("input");
+    if(!input){
+      return;
+    }
+
+    let pris = parseInt(input.value, 10) || 0;
+
+    if(pris > 4){
+      pris = 4;
+      input.value = "4";
+    }
+
+    if(pris <= 0){
+      input.value = "";
+      return;
+    }
+
+    recapData.push({
+      element: row.children[0].innerText,
+      quantite: pris,
+      type: "intend"
+    });
+  });
+
+  if(recapData.length === 0){
+    alert("Ajoute au moins une contribution.");
+    return;
+  }
+
+  try{
+    await Promise.all(recapData.map(item => addDoc(contributionsRef, {
+      element: item.element,
+      quantite: Number(item.quantite),
+      qui: prenom,
+      type: item.type,
+      createdAt: Date.now()
+    })));
+
+    ajouterAuRecap(recapData);
+    document.querySelectorAll("input[type='number']").forEach(input => {
+      input.value = "";
+    });
+  }catch(error){
+    console.error(error);
+    alert("La contribution n'a pas pu être enregistrée.");
+  }
 }
 
-function sauvegarder(){
+async function secretReset(){
+  const code = prompt("🔐 Code admin");
 
-let brunch=[]
-let intend=[]
+  if(code === null){
+    return;
+  }
 
-// BRUNCH
-document.querySelectorAll("tr[data-need]").forEach(row=>{
-brunch.push({
-progress:row.querySelector("progress").value,
-qui:row.querySelector(".qui").innerText,
-restant:row.querySelector(".restant").innerText
-})
-})
+  if(code !== "0426"){
+    alert("❌ Code incorrect");
+    return;
+  }
 
-// INTENDANCE
-document.querySelectorAll("#intend tr").forEach((row,index)=>{
-if(index===0 || row.classList.contains("section")) return
+  if(!confirm("⚠️ Tout supprimer ?")){
+    return;
+  }
 
-let cumul=row.querySelector(".cumul")
-let qui=row.querySelector(".qui")
-
-if(cumul){
-intend.push({
-cumul:cumul.innerText,
-qui:qui.innerText
-})
+  try{
+    const snapshot = await getDocs(contributionsRef);
+    await Promise.all(snapshot.docs.map(item => deleteDoc(doc(db, "contributions", item.id))));
+    resetRecap();
+  }catch(error){
+    console.error(error);
+    alert("La suppression a échoué.");
+  }
 }
-})
 
-localStorage.setItem("brunch",JSON.stringify(brunch))
-localStorage.setItem("intend",JSON.stringify(intend))
+function securiserSaisies(){
+  document.querySelectorAll("#table tr[data-need] input").forEach(input => {
+    input.addEventListener("input", function(){
+      const row = this.closest("tr");
+      const restant = parseInt(row.querySelector(".restant").innerText, 10) || 0;
+      const valeur = parseInt(this.value, 10);
 
+      if(valeur > restant){
+        this.value = String(restant);
+      }
+
+      if(valeur < 0){
+        this.value = "0";
+      }
+    });
+  });
+
+  document.querySelectorAll("#intend input").forEach(input => {
+    input.addEventListener("input", function(){
+      const valeur = parseInt(this.value, 10);
+
+      if(valeur > 4){
+        this.value = "4";
+      }
+
+      if(valeur < 0){
+        this.value = "0";
+      }
+    });
+  });
 }
 
 function charger(){
+  resetRecap();
 
-// BRUNCH
-let brunch=JSON.parse(localStorage.getItem("brunch"))
-if(brunch){
-document.querySelectorAll("tr[data-need]").forEach((row,i)=>{
-row.querySelector("progress").value=brunch[i].progress
-row.querySelector(".qui").innerText=brunch[i].qui
-row.querySelector(".restant").innerText=brunch[i].restant
-})
+  onSnapshot(query(contributionsRef, orderBy("createdAt")), snapshot => {
+    const contributions = snapshot.docs.map(item => item.data());
+    renderFromContributions(contributions);
+  }, error => {
+    console.error(error);
+    alert("Impossible de charger les contributions partagées.");
+  });
 }
 
-// INTENDANCE
-let intend=JSON.parse(localStorage.getItem("intend"))
-if(intend){
-let rows=document.querySelectorAll("#intend tr")
-let index=0
+window.ajouter = ajouter;
+window.secretReset = secretReset;
 
-rows.forEach(row=>{
-if(row.classList.contains("section") || !row.querySelector(".cumul")) return
-
-row.querySelector(".cumul").innerText=intend[index].cumul
-row.querySelector(".qui").innerText=intend[index].qui
-index++
-})
-}
-
-}
-
-function secretReset(){
-
-let code = prompt("🔐 Code admin")
-
-if(code === null) return
-
-if(code !== "0426"){
-alert("❌ Code incorrect")
-return
-}
-
-if(!confirm("⚠️ Tout supprimer ?")){
-return
-}
-
-localStorage.clear()
-location.reload()
-
-}
-
-charger()
-
+charger();
+securiserSaisies();
 </script>
-
 </body>
 </html>
-
