@@ -110,6 +110,15 @@ button:hover{
   text-align:center;
 }
 
+.compact-card{
+  padding:10px 20px;
+}
+
+.compact-card .event-details{
+  margin:0;
+  line-height:1.4;
+}
+
 @media screen and (max-width:768px){
   body{
     padding:10px;
@@ -159,6 +168,10 @@ button:hover{
   </p>
 </div>
 
+<div class="card compact-card">
+  <p class="event-details"><strong>A vos claviers et saisissez vos contributions 😘</strong></p>
+</div>
+
 <div class="card form">
   <label for="prenom">Ton prénom :</label>
   <input id="prenom" placeholder="Ex : Adam">
@@ -170,10 +183,10 @@ button:hover{
   <table id="table">
     <tr class="section"><td colspan="5">Pôle salé chaud</td></tr>
     <tr class="subhead">
-      <th>Élément</th>
+      <th>Il faut</th>
       <th>Quantité nécessaire</th>
-      <th>Je prends</th>
-      <th>Restant</th>
+      <th>Je ramène</th>
+      <th>Encore à prendre</th>
       <th>Qui</th>
     </tr>
 
@@ -269,10 +282,10 @@ button:hover{
 
     <tr class="section"><td colspan="5">Pôle sucré</td></tr>
     <tr class="subhead">
-      <th>Élément</th>
+      <th>Il faut</th>
       <th>Quantité nécessaire</th>
-      <th>Je prends</th>
-      <th>Restant</th>
+      <th>Je ramène</th>
+      <th>Encore à prendre</th>
       <th>Qui</th>
     </tr>
 
@@ -310,10 +323,10 @@ button:hover{
 
     <tr class="section"><td colspan="5">Boissons</td></tr>
     <tr class="subhead">
-      <th>Élément</th>
+      <th>Il faut</th>
       <th>Quantité nécessaire</th>
-      <th>Je prends</th>
-      <th>Restant</th>
+      <th>Je ramène</th>
+      <th>Encore à prendre</th>
       <th>Qui</th>
     </tr>
 
@@ -375,10 +388,10 @@ button:hover{
 
     <tr class="section"><td colspan="5">Accompagnements</td></tr>
     <tr class="subhead">
-      <th>Élément</th>
+      <th>Il faut</th>
       <th>Quantité nécessaire</th>
-      <th>Je prends</th>
-      <th>Restant</th>
+      <th>Je ramène</th>
+      <th>Encore à prendre</th>
       <th>Qui</th>
     </tr>
 
@@ -462,8 +475,8 @@ button:hover{
   <table id="intend">
     <tr class="section"><td colspan="4">Logistique</td></tr>
     <tr class="subhead">
-      <th>Élément</th>
-      <th>Je prends</th>
+      <th>Il faut</th>
+      <th>Je ramène</th>
       <th>Cumul</th>
       <th>Qui</th>
     </tr>
@@ -511,10 +524,10 @@ button:hover{
       <td class="qui"></td>
     </tr>
 
-    <tr class="section"><td colspan="4">Ambiance</td></tr>
+    <tr class="section"><td colspan="4">Organisation et Ambiance</td></tr>
     <tr class="subhead">
-      <th>Élément</th>
-      <th>Je prends</th>
+      <th>Il faut</th>
+      <th>Je participe</th>
       <th>Cumul</th>
       <th>Qui</th>
     </tr>
@@ -559,11 +572,11 @@ button:hover{
 </div>
 
 <div class="actions">
-  <button onclick="ajouter()">Ajouter ma contribution</button>
+  <button onclick="ajouter()">Cliquer pour confirmer mes selections</button>
 </div>
 
 <div class="card">
-  <h2>🧾 Ma contribution</h2>
+  <h2>🧾 Je ramène</h2>
   <table id="recap">
     <tr>
       <th>Élément</th>
