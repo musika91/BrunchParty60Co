@@ -892,10 +892,6 @@ function securiserSaisies(){
     input.addEventListener("input", function(){
       const valeur = parseInt(this.value, 10);
 
-      if(valeur > 4){
-        this.value = "4";
-      }
-
       if(valeur < 0){
         this.value = "0";
       }
