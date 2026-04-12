@@ -809,11 +809,6 @@ async function ajouter(){
 
     let pris = parseInt(input.value, 10) || 0;
 
-    if(pris > 4){
-      pris = 4;
-      input.value = "4";
-    }
-
     if(pris <= 0){
       input.value = "";
       return;
